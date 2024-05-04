@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icons</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: radial-gradient(white, transparent);
+            box-shadow: 0 0 2px white;
+            animation: falling linear 3s infinite;
+        }
+
+        @keyframes falling {
+            0% {
+                top: -10%;
+                opacity: 0;
+            }
+            30% {
+                opacity: 1;
+            }
+            100% {
+                top: 110%;
+                opacity: 0;
+            }
+        }
+
+        .social-icons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 1;
+        }
+
+        .social-icon {
+            background-color:#7AB2B2;
+            border-radius: 100%;
+            padding: 7px; /* Increased size */
+            font-size: 2rem; /* Increased size */
+            color: #EEF7FF;
+            transition: transform 0.3s;
+            z-index: 1;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+
+        .lightning {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+            width: 100vw;
+            height: 100vh;
+            animation: lightning linear 0.1s forwards;
+            opacity: 0;
+            z-index: 0;
+            top: 0;
+            left: 0;
+        }
+
+        @keyframes lightning {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="social-icons">
+        <a href="https://www.instagram.com/kalyan_uca/" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/Kalyan2426" class="social-icon"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit" class="social-icon"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61558885965027" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com/?lang=en-in" class="social-icon"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <script>
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.animationDuration = `${Math.random() * 2 + 1}s`; // Random duration between 1-3s
+            document.body.appendChild(star);
+
+            setTimeout(() => {
+                star.remove();
+            }, 3000); // Remove star after animation duration
+        }
+
+        setInterval(createStar, 200); // Create a star every 0.2s
+
+        function createLightning() {
+            const lightning = document.createElement('div');
+            lightning.className = 'lightning';
+            document.body.appendChild(lightning);
+
+            setTimeout(() => {
+                lightning.remove();
+            }, 100); // Remove lightning effect after 0.1s
+        }
+
+        setInterval(createLightning, 5000); // Create lightning effect every 5s
+    </script>
+</body>
+</html>
